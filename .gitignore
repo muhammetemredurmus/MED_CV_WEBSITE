@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+package.json
+package-lock.json
+
+# Test scripts and screenshots
+screenshot_*.mjs
+screenshot_detail.mjs
+screenshot_*.png
+detail_*.png
+
+# macOS
+.DS_Store
+
+# Claude memory
+.claude/

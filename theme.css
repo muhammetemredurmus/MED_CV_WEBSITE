@@ -1,0 +1,29 @@
+:root[data-theme="light"] {
+    --bg: #f5f5f7;
+    --panel: #ffffff;
+    --text: #111111;
+    --muted: #555555;
+    --accent: #e05a52;
+    --border: #cccccc;
+    --shadow: #cccccc;
+}
+
+:root[data-theme="dark"] {
+    --bg: #0b0b0f;
+    --panel: #14141b;
+    --text: #f5f5f7;
+    --muted: #b6b6c2;
+    --accent: #f58881;
+    --border: #404040;
+    --shadow: #000000;
+}
+
+*, *::before, *::after {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition: none;
+    }
+}

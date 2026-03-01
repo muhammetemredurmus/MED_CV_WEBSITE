@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>M. Emre Durmuş — Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="theme.css">
+    <style>
+        :root {
+            --bg: #0b0b0f;
+            --panel: #14141b;
+            --text: #f5f5f7;
+            --muted: #b6b6c2;
+            --accent: #f58881;
+            --border: #404040;
+            --shadow: #000000;
+            --radius: 18px;
+            --padding-right-left: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: system-ui, Roboto, sans-serif;
+            margin: 0;
+        }
+
+        header {
+            top: 0;
+            position: sticky;
+            border-bottom: 1px solid var(--border);
+            background-color: var(--panel);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        header a {
+            color: var(--text);
+            text-decoration: none;
+            margin-right: 1rem;
+        }
+
+        .logo {
+            color: var(--text);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+        }
+
+        header nav a {
+            color: var(--muted);
+        }
+
+        header nav a:hover {
+            color: var(--text);
+        }
+
+        main {
+            padding: 24px 0;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 0 auto 24px auto;
+            padding: 0 var(--padding-right-left);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background-color: var(--panel);
+            scroll-margin-top: 80px;
+        }
+
+        footer {
+            max-width: 800px;
+            border-top: 1px solid var(--border);
+            padding: 0 var(--padding-right-left);
+            color: var(--muted);
+            margin: 0 auto 24px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: var(--radius);
+            object-fit: cover;
+            border: 1px solid var(--border);
+            margin: 16px 0;
+        }
+
+        #home {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        #home .intro h1 {
+            margin-bottom: 4px;
+        }
+
+        #home .intro .title {
+            color: var(--accent);
+            font-weight: 600;
+            margin: 0 0 12px 0;
+        }
+
+        #home .intro p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 16px 0;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .skill-level {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Work History */
+        .job {
+            border-top: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        .job:first-child {
+            border-top: none;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .job-company {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin: 2px 0 10px 0;
+        }
+
+        .job-date {
+            color: var(--muted);
+            font-size: 0.8rem;
+            white-space: nowrap;
+            margin-left: 12px;
+        }
+
+        .job ul {
+            margin: 8px 0 0 0;
+            padding-left: 20px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .job p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin: 0 0 8px 0;
+        }
+
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--muted);
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 16px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .contact-value {
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            text-decoration: underline;
+        }
+
+        /* Languages */
+        .lang-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 16px 0;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .lang-level {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        /* Certifications */
+        .cert-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cert-list li {
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cert-list li:first-child {
+            border-top: none;
+        }
+
+        .cert-list li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Hobbies */
+        .hobbies-list {
+            padding: 16px 0;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .hobby-item {
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .hobby-item:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        /* Education */
+        .edu-item {
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .edu-item:first-child {
+            border-top: none;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            margin: 0 0 4px 0;
+        }
+
+        .edu-school {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin: 0 0 8px 0;
+        }
+
+        .edu-notes {
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+            padding-left: 16px;
+        }
+
+        section h2 {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            #home {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-grid,
+            .contact-grid,
+            .lang-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header nav a {
+                margin-right: 0.5rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="logo-wrap">
+            <div class="dot"></div>
+            <a class="logo" href="#">M.E. Durmuş</a>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div>
+            <button class="theme-btn">☀️ Theme</button>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HOME -->
+        <section id="home">
+            <img class="avatar" src="medPhoto.jpeg" alt="M. Emre Durmuş">
+            <div class="intro">
+                <h1>M. Emre Durmuş</h1>
+                <p class="title">Software Engineer · QA &amp; Test Automation</p>
+                <p>A Software Testing Enthusiast with 7+ years of experience. I offer genuine participation in Software
+                    Development with roles of Quality Assurance, Scrum Master, Product Owner, and Test Automation
+                    Engineer — across high-pace, high-risk, and high-complexity projects in Sector Leader Holdings,
+                    Emerging Mid-Level Companies, and Start-ups.</p>
+            </div>
+        </section>
+
+        <!-- WORK HISTORY -->
+        <section id="experience">
+            <h2>Work History</h2>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <p class="job-title">Software QA Engineer</p>
+                        <p class="job-company">INSIDER ONE — İstanbul, Turkey</p>
+                    </div>
+                    <span class="job-date">Mar 2025 – Present</span>
+                </div>
+                <p>In the fast-paced world of SaaS, I approach Quality Assurance not as bug hunting, but as a key
+                    enabler of user experience, scalability, and reliable SaaS delivery.</p>
+                <ul>
+                    <li>Designed and maintained scalable test automation frameworks using Python and JavaScript.</li>
+                    <li>Implemented UI test automation with Playwright and Selenium; Backend/API testing with Postman and
+                        Swagger.</li>
+                    <li>Integrated quality processes into Agile workflows and CI/CD pipelines using GitLab and
+                        Kubernetes.</li>
+                    <li>Contributed to AI/ML-driven products by aligning QA practices with modern LLMOps and MLOps
+                        principles.</li>
+                </ul>
+                <div class="job-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Playwright</span>
+                    <span class="tag">Selenium</span>
+                    <span class="tag">Postman</span>
+                    <span class="tag">Kubernetes</span>
+                    <span class="tag">GitLab CI/CD</span>
+                    <span class="tag">LLMOps</span>
+                    <span class="tag">Agile/Scrum</span>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <p class="job-title">Software Testing Engineer / Scrum Master</p>
+                        <p class="job-company">ZOVIZ — İstanbul, Turkey</p>
+                    </div>
+                    <span class="job-date">Jun 2024 – Feb 2025</span>
+                </div>
+                <p>Zoviz is an AI-powered branding product with 1M+ users and 5M+ traffic across Web and Mobile
+                    platforms.</p>
+                <ul>
+                    <li>Served as Scrum Master for 6+ cross-functional teams, facilitating sprint ceremonies, backlog
+                        management, and continuous process improvements.</li>
+                    <li>Worked closely with Web and Mobile teams to support Agile delivery and software quality.</li>
+                    <li>Executed end-to-end software testing covering backend services, UI/UX, architecture flows, and
+                        usability.</li>
+                    <li>Performed manual, regression, system integration, and UAT testing.</li>
+                    <li>Conducted API testing using Postman; implemented test automation with Selenium (Python).</li>
+                </ul>
+                <div class="job-tags">
+                    <span class="tag">Scrum Master</span>
+                    <span class="tag">Selenium</span>
+                    <span class="tag">Postman</span>
+                    <span class="tag">UAT</span>
+                    <span class="tag">Regression Testing</span>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <p class="job-title">Freelancer Software Engineer</p>
+                        <p class="job-company">Self-employed — İstanbul, Turkey</p>
+                    </div>
+                    <span class="job-date">Jul 2023 – Jun 2024</span>
+                </div>
+                <p>Freelance consultant for Software Testing and Development for various clients in Machine Learning,
+                    Deep Learning, IoT, Web, and Mobile App projects.</p>
+                <ul>
+                    <li>Business Analysis, Status Reports, Benchmarking Tests, Documentation, Literature Research.</li>
+                    <li>Test Automation and Data Modeling.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <p class="job-title">Senior Expert Software Test Engineer — Scrum Master</p>
+                        <p class="job-company">Beko Global (Arçelik) — İstanbul, Turkey</p>
+                    </div>
+                    <span class="job-date">Sep 2019 – Jun 2023</span>
+                </div>
+                <p>Beko Corporate is a global leader in consumer electronics, operating 20+ brands including Beko,
+                    Arçelik, Grundig, Hitachi, Whirlpool, Arctic, and Defy.</p>
+                <ul>
+                    <li>Served as Software Test Lead for Smart Home IoT R&amp;D projects, leading a 5-person QA team.
+                    </li>
+                    <li>Conducted exploratory testing, benchmarking, and root cause analysis.</li>
+                    <li>Created comprehensive test checklists and certification processes for Mobile, Cloud, and Embedded
+                        software across Arçelik smart home devices.</li>
+                    <li>Contributed to HomeWhiz Smart IoT Platform interoperability certifications, supported by
+                        TÜBİTAK.</li>
+                    <li>Led software validation for 40+ IoT devices, 500+ iOS/Android UI screens, and end-to-end cloud
+                        communication flows.</li>
+                </ul>
+                <div class="job-tags">
+                    <span class="tag">IoT</span>
+                    <span class="tag">Test Lead</span>
+                    <span class="tag">Scrum Master</span>
+                    <span class="tag">Mobile</span>
+                    <span class="tag">Cloud</span>
+                    <span class="tag">Embedded</span>
+                    <span class="tag">TÜBİTAK</span>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <p class="job-title">QA Test Engineer</p>
+                        <p class="job-company">Azerion — İstanbul, Turkey</p>
+                    </div>
+                    <span class="job-date">Jan 2019 – Sep 2019</span>
+                </div>
+                <ul>
+                    <li>Contributed to testing and delivery of 100+ web-based casual games.</li>
+                    <li>Performed QA activities for 10 mobile Unity games (Stratego, Pet Paradise, Strike Force Kitty,
+                        etc.).</li>
+                    <li>Executed manual, regression, usability, and UAT testing across Web and Mobile platforms.</li>
+                    <li>Applied Agile and Scrum practices, supporting sprint execution and continuous quality
+                        improvement.</li>
+                </ul>
+                <div class="job-tags">
+                    <span class="tag">Game QA</span>
+                    <span class="tag">Unity</span>
+                    <span class="tag">Mobile</span>
+                    <span class="tag">Agile</span>
+                </div>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <p class="job-title">Software Testing Coordinator — Test Lead</p>
+                        <p class="job-company">Açık Yazılım Ağı (AYA) — İstanbul, Turkey</p>
+                    </div>
+                    <span class="job-date">Feb 2023 – Jun 2023</span>
+                </div>
+                <p>Volunteering on Test Team Foundation — hiring, organization, coordination, issue tracking, test
+                    process and SDLC design for 15 Mobile and Web App projects with a 200+ QA engineers team.</p>
+                <p>Applications under <a href="https://www.afet.org" target="_blank"
+                        style="color:var(--accent);">afet.org</a> — helping thousands affected by tragic earthquakes.</p>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <p class="job-title">Electronic Team Member</p>
+                        <p class="job-company">AE2 Project YTU — İstanbul, Turkey</p>
+                    </div>
+                    <span class="job-date">Sep 2017 – Mar 2018</span>
+                </div>
+                <ul>
+                    <li>IoT Telemetric System Design for Alternative Energized Racing Vehicle of YTU AE2 Student Club.
+                    </li>
+                    <li>Used Embedded technologies, C, and Linux for sensors.</li>
+                    <li>Helped the team win the Shell Eco Marathon 2019 Global Safety Award.</li>
+                </ul>
+                <div class="job-tags">
+                    <span class="tag">IoT</span>
+                    <span class="tag">Embedded</span>
+                    <span class="tag">C</span>
+                    <span class="tag">Linux</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <span class="skill-name">Python</span>
+                    <span class="skill-level">Good</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Test Techniques &amp; Management</span>
+                    <span class="skill-level">Excellent</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Test Automation</span>
+                    <span class="skill-level">Good</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Testing Strategy &amp; Business Analysis</span>
+                    <span class="skill-level">Excellent</span>
+                </div>
+            </div>
+
+            <h2>Languages</h2>
+            <div class="lang-grid">
+                <div class="lang-item">
+                    <span>English</span>
+                    <span class="lang-level">Excellent</span>
+                </div>
+                <div class="lang-item">
+                    <span>Deutsch</span>
+                    <span class="lang-level">Average</span>
+                </div>
+            </div>
+
+            <h2>Certifications</h2>
+            <ul class="cert-list">
+                <li>Agile Principals 101 — Scrum Inc.</li>
+                <li>Scrum Master Certificate — ACM Agile</li>
+                <li>Object Oriented Programming with Java — Bilge Adam Academy</li>
+                <li>C++ and OOP — C and System Developers Organisation</li>
+                <li>Creative Writing — Boğaziçi University (BUMED)</li>
+            </ul>
+
+            <h2>Hobbies</h2>
+            <div class="hobbies-list">
+                <div class="hobby-item">
+                    <strong>Reading &amp; Writing</strong>
+                    <p>A devotion to reading mostly everything and having an understanding about life attentioned in
+                        detail. Deep interest in literature for both reading and writing.</p>
+                </div>
+                <div class="hobby-item">
+                    <strong>Music</strong>
+                    <p>Music is my meditation and motivation. Always enjoying discovering new records and creating music
+                        in a mini studio.</p>
+                </div>
+                <div class="hobby-item">
+                    <strong>Sports</strong>
+                    <p>Deeply interested in sports since birth. Played basketball in TBF junior leagues and CBL
+                        basketball league.</p>
+                </div>
+                <div class="hobby-item">
+                    <strong>Gaming</strong>
+                    <p>Love playing video games, especially Strategy and Open World games.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education">
+            <h2>Education</h2>
+
+            <div class="edu-item">
+                <p class="edu-degree">Master of Science — Communication Engineering</p>
+                <p class="edu-school">Yıldız Technical University, Istanbul</p>
+                <ul class="edu-notes">
+                    <li>Interests: Artificial Intelligence, Deep Learning, Data Mining, Behavioral Biometrics.</li>
+                    <li>Course stage completed with 3.00 GPA.</li>
+                </ul>
+            </div>
+
+            <div class="edu-item">
+                <p class="edu-degree">Bachelor of Science — Electronics and Communication Engineering</p>
+                <p class="edu-school">Yıldız Technical University, Istanbul</p>
+                <ul class="edu-notes">
+                    <li>Thesis: Several Antenna Designs and Research of the Impact for SAR Values and Radiation over
+                        Body.</li>
+                    <li>Project: Telemetric System Design for Vehicle Support.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-label">Address</span>
+                    <span class="contact-value">Istanbul, 34752, Turkey</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <span class="contact-value">+90 533 662 48 88</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">E-mail</span>
+                    <span class="contact-value"><a
+                            href="mailto:me.durmus94@gmail.com">me.durmus94@gmail.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-label">LinkedIn</span>
+                    <span class="contact-value"><a href="https://linkedin.com/in/medurmus94"
+                            target="_blank">linkedin.com/in/medurmus94</a></span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 M. Emre Durmuş</p>
+        <a href="#home">Back to top</a>
+    </footer>
+    <script src="theme.js"></script>
+</body>
+
+</html>
